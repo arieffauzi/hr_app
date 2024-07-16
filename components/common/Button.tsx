@@ -7,12 +7,13 @@ import {
 } from "react-native";
 import React from "react";
 import { IButtonVariants } from "@/constants/ButtonVariants";
+import { Colors } from "@/constants/Colors";
 
 interface IButton extends PressableProps {
   children: React.ReactNode;
   onPress?: () => void;
   width?: string;
-  variants?: IButtonVariants;
+  variants?: keyof IButtonVariants;
 }
 
 const Button = (props: IButton) => {
@@ -39,10 +40,20 @@ const Button = (props: IButton) => {
       onPress={onPress}
       onPressIn={fadeIn}
       onPressOut={fadeOut}
-      style={[styles.primary]}
+      style={
+        variants && variants === "secondary" ? styles.secondary : styles.primary
+      }
     >
       <Animated.View style={{ opacity: animated }}>
-        <Text style={styles.text}>{children}</Text>
+        <Text
+          style={
+            variants && variants === "secondary"
+              ? styles.textSecondary
+              : styles.textPrimary
+          }
+        >
+          {children}
+        </Text>
       </Animated.View>
     </Pressable>
   );
@@ -51,11 +62,21 @@ const Button = (props: IButton) => {
 export default Button;
 
 const styles = StyleSheet.create({
-  text: {
+  textPrimary: {
     color: "black",
   },
   primary: {
-    backgroundColor: "#FFE01B",
+    backgroundColor: Colors.primary,
+    width: "100%",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 8,
+  },
+  textSecondary: {
+    color: "white",
+  },
+  secondary: {
+    backgroundColor: Colors.secondary,
     width: "100%",
     alignItems: "center",
     padding: 10,

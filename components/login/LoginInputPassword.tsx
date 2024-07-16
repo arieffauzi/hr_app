@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import React from "react";
 import { LoginErrorField } from "@/constants/login/LoginProviders";
 import { useLoginContext } from "@/lib/useContext/useLoginContext";
+import { memo } from "react";
 
 const LoginInputPassword = () => {
   const { dispatch, loginStates } = useLoginContext();
@@ -13,6 +13,7 @@ const LoginInputPassword = () => {
   return (
     <View>
       <TextInput
+        secureTextEntry={true}
         autoCapitalize="none"
         placeholder="Password"
         style={styles.input}
@@ -25,7 +26,7 @@ const LoginInputPassword = () => {
   );
 };
 
-export default LoginInputPassword;
+export default memo(LoginInputPassword);
 
 const styles = StyleSheet.create({
   input: {

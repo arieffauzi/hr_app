@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import React, { memo } from "react";
+import { memo } from "react";
 import { useLoginContext } from "@/lib/useContext/useLoginContext";
 import { LoginErrorField } from "@/constants/login/LoginProviders";
 

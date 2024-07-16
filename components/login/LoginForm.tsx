@@ -1,5 +1,5 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { memo } from "react";
 import LoginInputEmail from "./LoginInputEmail";
 import LoginInputPassword from "./LoginInputPassword";
 import Button from "../common/Button";
@@ -50,7 +50,7 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default memo(LoginForm);
 
 const styles = StyleSheet.create({
   container: {
